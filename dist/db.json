@@ -1,0 +1,11 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "test",
+            "password": "$2b$10$DquKfRf4DQBYW89IJgS92Oen6xrfUUl4cjoIN0ae/8XehyNSLCdva",
+            "email": "test@amass.co.kr",
+            "role": "Developer"
+        }
+    ]
+}
