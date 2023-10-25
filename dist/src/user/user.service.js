@@ -52,6 +52,7 @@ let UserService = class UserService {
         else {
             user.id = db_json_1.users[db_json_1.users.length - 1].id + 1;
         }
+        console.log('dbPath', this.dbPath);
         const data = JSON.parse(fs.readFileSync(this.dbPath, 'utf8'));
         data.users.push(user);
         fs.writeFileSync(this.dbPath, JSON.stringify(data, null, 2));

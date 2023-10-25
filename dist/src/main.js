@@ -13,7 +13,6 @@ const versionPrefix = 'v';
 const defaultVersion = '1';
 const getApp = async () => {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    console.log('app', app);
     app.use((0, helmet_1.default)());
     app.setGlobalPrefix(globalPrefix);
     app.enableVersioning({
@@ -21,13 +20,21 @@ const getApp = async () => {
         prefix: versionPrefix,
         defaultVersion: defaultVersion,
     });
+    app.enableCors({
+        origin: [
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'http://amass-admin-frontend.koreacentral.cloudapp.azure.com/',
+        ],
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+    });
     return app;
 };
 exports.getApp = getApp;
 async function bootstrap() {
     const app = await (0, exports.getApp)();
-    const port = process.env.PORT || 4000;
-    console.log('port', port);
+    const port = 4000;
     await app.listen(port);
     common_1.Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}/${versionPrefix}${defaultVersion}`);
 }

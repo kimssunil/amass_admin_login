@@ -28,15 +28,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const bcrypt = __importStar(require("bcryptjs"));
 const jwt = __importStar(require("jsonwebtoken"));
-const db_json_1 = require("../../db.json");
 let AuthService = class AuthService {
     async login(email, password) {
-        const user = db_json_1.users.find((user) => user.email === email);
+        const dbPath = path_1.default.resolve(__dirname, '../../db.json');
+        const data = JSON.parse(fs_1.default.readFileSync(dbPath, 'utf8'));
+        const users = data.users;
+        const user = users.find((user) => user.email === email);
         if (!user) {
             return null;
         }

@@ -1,8 +1,14 @@
 module.exports = {
   apps: [
     {
+      name: 'nestjs-app',
+      instances: 'max',
+      exec_mode: 'cluster',
       script: 'main.js',
       watch: '.',
+      env: {
+        NODE_ENV: 'production',
+      },
     },
   ],
 

@@ -19,7 +19,7 @@ export class AuthController {
       loginDto.email,
       loginDto.password,
     );
-
+    console.log('user', user);
     if (!user) {
       throw new HttpException(
         'Invalid email or password',

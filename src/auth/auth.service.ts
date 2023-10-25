@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import fs from 'fs';
+import path from 'path';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { users } from '../../db.json'; // Import your db.json
 import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class AuthService {
   async login(email: string, password: string): Promise<any> {
+    const dbPath = path.resolve(__dirname, '../../db.json');
+    const data = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+    const users = data.users;
     const user: User = users.find((user) => user.email === email);
     if (!user) {
       return null;

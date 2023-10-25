@@ -23,6 +23,7 @@ let AuthController = class AuthController {
     async login(loginDto) {
         console.log('loginDto', loginDto);
         const user = await this.authService.login(loginDto.email, loginDto.password);
+        console.log('user', user);
         if (!user) {
             throw new common_1.HttpException('Invalid email or password', common_1.HttpStatus.UNAUTHORIZED);
         }

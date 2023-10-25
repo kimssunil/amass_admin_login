@@ -21,6 +21,7 @@ export class UserService {
     } else {
       user.id = users[users.length - 1].id + 1;
     }
+    console.log('dbPath', this.dbPath);
     const data = JSON.parse(fs.readFileSync(this.dbPath, 'utf8'));
     data.users.push(user);
     fs.writeFileSync(this.dbPath, JSON.stringify(data, null, 2));

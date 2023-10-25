@@ -2,9 +2,9 @@
   "users": [
     {
       "id": 1,
-      "username": "test",
-      "password": "$2b$10$DquKfRf4DQBYW89IJgS92Oen6xrfUUl4cjoIN0ae/8XehyNSLCdva",
-      "email": "test@amass.co.kr",
+      "username": "admin",
+      "password": "$2b$10$6Ov8PV8cJ1EVqGuztS7NM.LDSfctQS1JUtcsPayo3X9ULcop49mOi",
+      "email": "admin@amass.co.kr",
       "role": "Developer"
     }
   ]
